@@ -14,7 +14,7 @@ function ARComponent() {
   useEffect(() => {
     const mindarThree = new MindARThree({
       container: containerRef.current,
-      imageTargetSrc: "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/Benten.mind",
+      imageTargetSrc: "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatchAssets@main/Benten.mind",
       filterMinCF: 0.01,
       filterBeta: 50,
       warmupTolerance: 0.1,
@@ -43,7 +43,7 @@ function ARComponent() {
     // Load the audio file
     const audioLoader = new THREE.AudioLoader();
     const sound = new THREE.Audio(listener);
-    audioLoader.load("https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/omnitrix.mp3", function(buffer) {
+    audioLoader.load("https://cdn.jsdelivr.net/gh/ma22-maker/ARWatchAssets@main/omnitrix.mp3", function(buffer) {
       sound.setBuffer(buffer);
       sound.setLoop(false);
       sound.setVolume(2);
@@ -53,7 +53,7 @@ function ARComponent() {
     // Load the GLTF model
     const loader = new GLTFLoader();
     loader.load(
-      "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/classic_omnitrix.glb",
+      "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatchAssets@main/classic_omnitrix.glb",
       (gltf) => {
         const model = gltf.scene;
         model.scale.set(10, 10, 10);

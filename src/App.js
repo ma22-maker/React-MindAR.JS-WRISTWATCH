@@ -16,7 +16,7 @@ function Home() {
                 Hey there! Ready for a little AR magic? 🎩✨ Here's a tiny demo
                 using MindAR with React, but you'll need to do a bit of the legwork.
                 It's a marker-based AR experience, so first things first:            
-                <a href="https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/wp10826527-ben-10-cartoon-wallpapers.jpg" download> download this image..</a>
+                <a href="https://cdn.jsdelivr.net/gh/ma22-maker/ARWatchAssets@main/wp10826527-ben-10-cartoon-wallpapers.jpg" download> download this image..</a>
                 Go on, I dare you. Open it on your mobile—yes, your
                 trusty smartphone.
                 <br />
