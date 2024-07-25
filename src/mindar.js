@@ -8,13 +8,13 @@ function ARComponent() {
   const modelRef = useRef(null);
   const mixerRef = useRef(null);
   const actionRef = useRef(null);
+  const audioRef = useRef(null);
   const [scaleFactor, setScaleFactor] = useState(1);
 
   useEffect(() => {
     const mindarThree = new MindARThree({
       container: containerRef.current,
-      imageTargetSrc:
-        "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/Benten.mind",
+      imageTargetSrc: "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/Benten.mind",
       filterMinCF: 0.01,
       filterBeta: 50,
       warmupTolerance: 0.1,
@@ -37,13 +37,27 @@ function ARComponent() {
     directionalLight.position.set(2, 2, 2);
     scene.add(directionalLight);
 
+    // Add audio listener to the camera
+    const listener = new THREE.AudioListener();
+    camera.add(listener);
+
+    // Load the audio file
+    const audioLoader = new THREE.AudioLoader();
+    const sound = new THREE.Audio(listener);
+    audioLoader.load("https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/omnitrix.mp3", function(buffer) {
+      sound.setBuffer(buffer);
+      sound.setLoop(false);
+      sound.setVolume(2);
+      audioRef.current = sound;
+    });
+
     // Load the GLTF model
     const loader = new GLTFLoader();
     loader.load(
       "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/classic_omnitrix.glb",
       (gltf) => {
         const model = gltf.scene;
-        model.scale.set(3,3,3);
+        model.scale.set(10, 10, 10);
         model.rotation.x = Math.PI / 2;
         model.rotation.y = Math.PI / 2;
         anchor.group.add(model);
@@ -53,23 +67,15 @@ function ARComponent() {
         const mixer = new THREE.AnimationMixer(model);
         mixerRef.current = mixer;
         const clips = gltf.animations;
-        console.log(clips);
         if (clips.length > 0) {
-          const clip = THREE.AnimationClip.findByName(
-            clips,
-           "Animation"
-          );
-          // console.log("clio",clip)
+          const clip = THREE.AnimationClip.findByName(clips, "Animation");
           if (clip) {
             const action = mixer.clipAction(clip);
             action.clampWhenFinished = true;
             action.loop = THREE.LoopOnce;
             actionRef.current = action;
-            console.log( actionRef.current)
           } else {
-            console.error(
-              'Animation clip "Animation" not found.'
-            );
+            console.error('Animation clip "Animation" not found.');
           }
         } else {
           console.error("No animations found in GLTF model.");
@@ -105,6 +111,9 @@ function ARComponent() {
     const handleModelClick = () => {
       if (actionRef.current) {
         actionRef.current.reset().play();
+      }
+      if (audioRef.current) {
+        audioRef.current.play();
       }
     };
 
