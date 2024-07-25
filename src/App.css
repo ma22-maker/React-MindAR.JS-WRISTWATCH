@@ -1,11 +1,4 @@
-.App {
-  text-align: center;
-}
 
-.control-buttons {
-  position: relative;
-  z-index: 1000;
-}
 
 .container {
   margin: 20px auto;
@@ -14,3 +7,95 @@
   width: 100vh;
   overflow: hidden;
 }
+
+ body {
+  margin: 30px;
+  font-family: Arial, sans-serif;
+  position: relative;
+  background-color: black;
+  color: #e0dada;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+.text-container {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.text-container h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  margin-bottom: 10px;
+  color: rgb(175, 236, 115);
+}
+
+.text-container p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.control-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.control-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.ar-container {
+  width: 100%;
+  height: 500px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .text-container {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .control-buttons {
+    margin-top: 20px;
+  }
+
+  .ar-container {
+    height: 300px;
+  }
+}
+

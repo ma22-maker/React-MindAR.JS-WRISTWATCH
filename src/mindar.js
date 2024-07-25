@@ -9,7 +9,7 @@ function ARComponent() {
   const mixerRef = useRef(null);
   const actionRef = useRef(null);
   const audioRef = useRef(null);
-  const [scaleFactor, setScaleFactor] = useState(1);
+  const [scaleFactor, setScaleFactor] = useState(10);
 
   useEffect(() => {
     const mindarThree = new MindARThree({
@@ -21,7 +21,6 @@ function ARComponent() {
       missTolerance: 0.1,
       uiError: "no",
       uiLoading: "no",
-      uiScanning: "no",
     });
 
     const { renderer, scene, camera } = mindarThree;
@@ -95,13 +94,14 @@ function ARComponent() {
     const handleTargetLost = () => {
       console.log("Target lost");
     };
-
     const handleMouseWheel = (event) => {
       event.preventDefault(); // Prevent the default scroll behavior
       if (modelRef.current) {
         setScaleFactor((prevScale) => {
-          const scaleChange = event.deltaY * -0.001; // Adjust scaling sensitivity
-          const newScale = Math.max(0.1, Math.min(5, prevScale + scaleChange));
+          // Increase sensitivity by changing the multiplier value
+          const scaleChange = event.deltaY * -0.02; // Adjusted scaling sensitivity
+          // Adjust the scale limits to allow a larger range
+          const newScale = Math.max(0.1, Math.min(50, prevScale + scaleChange));
           modelRef.current.scale.set(newScale, newScale, newScale);
           return newScale;
         });
