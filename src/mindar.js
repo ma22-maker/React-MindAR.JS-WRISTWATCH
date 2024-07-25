@@ -14,7 +14,7 @@ function ARComponent() {
     const mindarThree = new MindARThree({
       container: containerRef.current,
       imageTargetSrc:
-        "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/targets.mind",
+        "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/Benten.mind",
       filterMinCF: 0.01,
       filterBeta: 50,
       warmupTolerance: 0.1,
@@ -40,10 +40,10 @@ function ARComponent() {
     // Load the GLTF model
     const loader = new GLTFLoader();
     loader.load(
-      "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/omnitrix_ben_10.glb",
+      "https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/classic_omnitrix.glb",
       (gltf) => {
         const model = gltf.scene;
-        model.scale.set(0.6, 0.6, 0.6);
+        model.scale.set(3,3,3);
         model.rotation.x = Math.PI / 2;
         model.rotation.y = Math.PI / 2;
         anchor.group.add(model);
@@ -53,11 +53,11 @@ function ARComponent() {
         const mixer = new THREE.AnimationMixer(model);
         mixerRef.current = mixer;
         const clips = gltf.animations;
-        // console.log(clips);
+        console.log(clips);
         if (clips.length > 0) {
           const clip = THREE.AnimationClip.findByName(
             clips,
-            "Torus.001|Torus.001Action.003"
+           "Animation"
           );
           // console.log("clio",clip)
           if (clip) {
@@ -68,7 +68,7 @@ function ARComponent() {
             console.log( actionRef.current)
           } else {
             console.error(
-              'Animation clip "Torus.001|Torus.001Action.003" not found.'
+              'Animation clip "Animation" not found.'
             );
           }
         } else {

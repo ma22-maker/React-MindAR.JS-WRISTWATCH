@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import ARComponent from './mindar-three-viewer';
+import ARComponent from './mindar';
 
 function App() {
   const [started, setStarted] = useState(null);
