@@ -7,6 +7,7 @@ Welcome to the ARComponent demo, a marker-based augmented reality (AR) experienc
 - **Marker-Based AR Tracking:** Uses MindAR's image tracking capabilities to detect and interact with markers.
 - **3D Model Integration:** Load and display 3D models (e.g., a golden watch) in AR.
 - **Dynamic Lighting:** Includes ambient and directional lights to enhance the visual experience.
+- **Interactive AR Experience:** Feel free to zoom in or out. Once you tap on the 3D model, prepare for some epic sound effects.
 
 ## Installation Guide
 
@@ -47,7 +48,7 @@ To get started with this project, follow these steps:
 
 To test the AR functionality, you will need a marker image. Download the marker image from the following link:
 
-- [Download Marker Image](https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/targets.mind)
+- [Download Marker Image](https://cdn.jsdelivr.net/gh/ma22-maker/ARWatch@main/wp10826527-ben-10-cartoon-wallpapers.jpg)
 
 Print or display this marker image on your screen. Point your device’s camera at the marker to see the AR experience come to life.
 
