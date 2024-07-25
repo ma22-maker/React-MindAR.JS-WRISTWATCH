@@ -23,7 +23,7 @@ To get started with this project, follow these steps:
 
     ```bash
     git clone https://github.com/ma22-maker/React-MindAR.JS-WatchDemo.git
-    cd React-MindAR.JS-WRISTWATCH
+    cd React-MindAR.JS-WatchDemo
     ```
 
 ### Install Dependencies
